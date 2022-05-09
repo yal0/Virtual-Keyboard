@@ -52,5 +52,5 @@ body{
 }
 
 .active {
-    animation: glowing 1300ms 3;
+    animation: glowing 1300ms 1;
 }
