@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+}
+
+#text{
+    width: 70%;
+    min-width: 250px;
+    height: 250px;
+}
+
+#keyboard{
+    background: lightgray;
+    padding:10px;
+    max-width:1000px;
+    min-width: 650px;
+    
+    margin: 15px auto;
+    border:1px solid dimgrey;
+}
+
+.row{
+    display: flex;
+}
+
+.row div{
+    border:1px solid dimgrey;
+    background: whitesmoke;
+    padding:10px;
+    margin:2px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
