@@ -1,3 +1,6 @@
+const CapsLock = false;
+const language = 'eng';
+
 const KEYS = {
   rus: [
     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
@@ -86,4 +89,68 @@ function showKeyboard(lang = 'eng') {
   }
 }
 
+function insertSymbol(text) {
+  const txtarea = document.getElementById('text');
+  const start = txtarea.selectionStart;
+  const end = txtarea.selectionEnd;
+  const finText = txtarea.value.substring(0, start) + text + txtarea.value.substring(end);
+  txtarea.value = finText;
+  txtarea.focus();
+  txtarea.selectionEnd = (start === end) ? (end + text.length) : end;
+}
+
+function deleteSymbol() {
+  const txtarea = document.getElementById('text');
+  const start = txtarea.selectionStart;
+  const end = txtarea.selectionEnd;
+  if (end === 0) return;
+  const finText = (start === end)
+    ? txtarea.value.substring(0, start - 1) + txtarea.value.substring(end)
+    : txtarea.value.substring(0, start) + txtarea.value.substring(end);
+  txtarea.value = finText;
+  txtarea.focus();
+  txtarea.selectionEnd = start;
+}
+
+function keyHover(event) {
+    if (event.currentTarget === event.target || event.target.className === 'row') return;
+    event.target.classList.toggle('active');
+    // alert(event.target.classList);
+}
+
+function keyPress(event) {
+  if (event.currentTarget === event.target || event.target.className === 'row') return;
+  event.target.classList.toggle('active');
+  switch (event.target.innerHTML) {
+    case 'Backspace':
+      deleteSymbol();
+      break;
+    case 'Tab':
+      insertSymbol('    ');
+      break;
+    case 'Caps Lock':
+      break;
+    case 'Enter':
+      insertSymbol('\n');
+      break;
+    case 'Shift':
+      break;
+    case 'Ctrl':
+      break;
+    case 'Alt':
+      break;
+    case 'Win':
+      break;
+    default:
+      insertSymbol(event.target.innerHTML);
+      break;
+  }
+  // event.target
+}
+
 showKeyboard();
+const keyboard = document.getElementById('keyboard');
+
+// keyboard.addEventListener('mousedown', keyHover);
+keyboard.addEventListener('click', keyPress);
+
