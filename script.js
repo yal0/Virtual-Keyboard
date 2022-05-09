@@ -63,7 +63,7 @@ function showKeyboard(lang = 'eng') {
 
   elem = document.createElement('p');
   elem.innerHTML = `Клавиатура создана в операционной системе <strong>Windows</strong><br>
-  Для переключения языка комбинация: <strong>левыe alt + shift</strong>`;
+  Для переключения языка комбинация: <strong>левый ctrl</strong>`;
   document.body.append(elem);
 
   elem = document.createElement('textarea');
@@ -113,12 +113,12 @@ function deleteSymbol() {
 }
 
 function keyHover(event) {
-    if (event.currentTarget === event.target || event.target.className === 'row') return;
-    event.target.classList.toggle('active');
-    // alert(event.target.classList);
+  if (event.currentTarget === event.target || event.target.className === 'row') return;
+  event.target.classList.toggle('active');
+  // alert(event.target.classList);
 }
 
-function keyPress(event) {
+function mousePress(event) {
   if (event.currentTarget === event.target || event.target.className === 'row') return;
   event.target.classList.toggle('active');
   switch (event.target.innerHTML) {
@@ -148,9 +148,23 @@ function keyPress(event) {
   // event.target
 }
 
+function keyPress(e) {
+//   const text = `${e.type
+//   } key=${e.key
+//   } code=${e.code
+//   }${e.shiftKey ? ' shiftKey' : ''
+//   }${e.ctrlKey ? ' ctrlKey' : ''
+//   }${e.altKey ? ' altKey' : ''
+//   }${e.metaKey ? ' metaKey' : ''
+//   }${e.repeat ? ' (repeat)' : ''
+//   }\n`;
+//   alert(text);
+}
+
 showKeyboard();
 const keyboard = document.getElementById('keyboard');
 
 keyboard.addEventListener('mousedown', keyHover);
-keyboard.addEventListener('click', keyPress);
+keyboard.addEventListener('click', mousePress);
 
+document.body.addEventListener('keydown', keyPress);
