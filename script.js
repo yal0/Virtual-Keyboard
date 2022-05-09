@@ -151,6 +151,6 @@ function keyPress(event) {
 showKeyboard();
 const keyboard = document.getElementById('keyboard');
 
-// keyboard.addEventListener('mousedown', keyHover);
+keyboard.addEventListener('mousedown', keyHover);
 keyboard.addEventListener('click', keyPress);
 

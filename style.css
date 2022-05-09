@@ -44,3 +44,13 @@ body{
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
 } 
 */
+
+@keyframes glowing {
+    0% { background-color: whitesmoke;}
+    50% { background-color: lightseagreen }
+    100% { background-color: whitesmoke; }
+}
+
+.active {
+    animation: glowing 1300ms 3;
+}
